@@ -22,6 +22,7 @@ public class RosterActivity extends AppCompatActivity implements RosterViewInter
 
     @Inject
     RosterPresenter presenter;
+
     @BindView(R.id.rosterts_recycle_view)
     RecyclerView recyclerView;
 
@@ -38,6 +39,13 @@ public class RosterActivity extends AppCompatActivity implements RosterViewInter
         presenter.fetchData();
     }
 
+    private void resolveDependencies() {
+        DaggerRosterComponent.builder()
+                .netComponent(((App)getApplicationContext()).getNetComponent())
+                .rosterModule(new RosterModule(this))
+                .build().inject(this);
+    }
+
     private void createView() {
         ButterKnife.bind(this);
 
@@ -48,13 +56,6 @@ public class RosterActivity extends AppCompatActivity implements RosterViewInter
 
         rostersAdapter = new RostersAdapter(this, this) ;
         recyclerView.setAdapter(rostersAdapter);
-    }
-
-    private void resolveDependencies() {
-        DaggerRosterComponent.builder()
-                .netComponent(((App)getApplicationContext()).getNetComponent())
-                .rosterModule(new RosterModule(this))
-                .build().inject(this);
     }
 
     @Override
