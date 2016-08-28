@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.azvk.mvp_4.R;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import butterknife.BindView;
