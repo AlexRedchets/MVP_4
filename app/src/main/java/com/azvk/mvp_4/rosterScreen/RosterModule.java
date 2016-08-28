@@ -11,15 +11,15 @@ import dagger.Provides;
 @Module
 public class RosterModule {
 
-    RosterViewInterface rosterViewInterface;
+    RosterViewInterface.View rosterViewInterface;
 
-    public RosterModule(RosterViewInterface rosterViewInterface) {
+    public RosterModule(RosterViewInterface.View rosterViewInterface) {
         this.rosterViewInterface = rosterViewInterface;
     }
 
     @Provides
     @CustomScope
-    RosterViewInterface getRosterViewInterface(){
+    RosterViewInterface.View getRosterViewInterface(){
         return rosterViewInterface;
     }
 }

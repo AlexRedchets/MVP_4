@@ -20,4 +20,8 @@ public class App extends Application {
                 .netModule(new NetModule("http://54.186.57.223:3000/"))
                 .build();
     }
+
+    public NetComponent getNetComponent(){
+        return netComponent;
+    }
 }
