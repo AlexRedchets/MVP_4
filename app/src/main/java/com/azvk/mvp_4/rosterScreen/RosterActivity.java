@@ -42,7 +42,7 @@ public class RosterActivity extends AppCompatActivity implements RosterViewInter
     }
 
     private void resolveDependencies() {
-        ((App)getApplicationContext()).getRosterComponent(this);
+        ((App)getApplicationContext()).getRosterComponent(this).inject(this);
     }
 
     private void createView() {

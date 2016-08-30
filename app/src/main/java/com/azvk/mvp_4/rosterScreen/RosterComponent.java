@@ -12,5 +12,5 @@ import dagger.Subcomponent;
 @CustomScope
 @Subcomponent(modules = RosterModule.class)
 public interface RosterComponent {
-    void inject (RosterActivity rosterActivity);
+    RosterActivity inject (RosterActivity rosterActivity);
 }
