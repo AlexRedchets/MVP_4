@@ -1,10 +1,12 @@
 package com.azvk.mvp_4.rosterScreen;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
 
@@ -40,10 +42,7 @@ public class RosterActivity extends AppCompatActivity implements RosterViewInter
     }
 
     private void resolveDependencies() {
-        DaggerRosterComponent.builder()
-                .netComponent(((App)getApplicationContext()).getNetComponent())
-                .rosterModule(new RosterModule(this))
-                .build().inject(this);
+        ((App)getApplicationContext()).getRosterComponent(this);
     }
 
     private void createView() {
@@ -56,6 +55,12 @@ public class RosterActivity extends AppCompatActivity implements RosterViewInter
 
         rostersAdapter = new RostersAdapter(this, this) ;
         recyclerView.setAdapter(rostersAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ((App)getApplicationContext()).releaseRosterComponent();
     }
 
     @Override

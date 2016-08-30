@@ -10,7 +10,7 @@ import dagger.Subcomponent;
  * Created by azvk on 2016-08-28.
  */
 @CustomScope
-@Component(dependencies = NetComponent.class, modules = RosterModule.class)
+@Subcomponent(modules = RosterModule.class)
 public interface RosterComponent {
-    void inject (RosterActivity activity);
+    void inject (RosterActivity rosterActivity);
 }
