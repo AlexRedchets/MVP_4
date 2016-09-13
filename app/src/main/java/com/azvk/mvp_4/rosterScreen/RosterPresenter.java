@@ -8,9 +8,6 @@ import retrofit2.Retrofit;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-/**
- * Created by azvk on 2016-08-28.
- */
 
 public class RosterPresenter implements RosterViewInterface.Presenter {
 
